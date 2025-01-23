@@ -1,15 +1,23 @@
 import React from "react";
 import {CarDTO} from "../../api/car/CarDTO.ts";
 import {Button, Card, CardActions, CardContent, CardMedia, Typography} from "@mui/material";
+import {useNavigate} from "react-router";
 
 const CarCard: React.FC<{ car: CarDTO }> = ({ car }) => {
+    const navigate = useNavigate();
+
     return (
         <Card sx={{ display: "flex", flexDirection: "column", height: "100%"}}>
             <CardMedia
                 component="img"
-                height="250"
-                image={`/bmw_seria3.jpg`} // Assuming car images follow this naming convention
+                image={`/${car.model.toLowerCase()}.jpg`}
                 alt={car.model}
+                sx={{
+                    height: "250px",
+                    width: "400px",
+                    objectFit: "cover",
+                    marginBottom: "16px",
+                }}
             />
             <CardContent>
                 <Typography variant="h5" component="div">
@@ -25,9 +33,9 @@ const CarCard: React.FC<{ car: CarDTO }> = ({ car }) => {
                     Kategoria: {car.category}
                 </Typography>
             </CardContent>
-            <CardActions>
-                <Button size="small" disabled={!car.available} sx={{ marginTop: "auto", alignSelf: "center"}}>
-                    {car.available ? "Wypożycz teraz!" : "Niedostępne"}
+            <CardActions sx={{alignSelf: "center"}}>
+                <Button size="small" disabled={!car.available} onClick={() => {navigate(`/reserve/${car.id}`)}}>
+                    {car.available ? "Wypożycz" : "Niedostępne"}
                 </Button>
             </CardActions>
         </Card>

@@ -1,23 +1,26 @@
-import {AppBar, Box, Button, Toolbar, Typography} from "@mui/material";
+import {AppBar, Box, Button, Divider, Toolbar, Typography} from "@mui/material";
 import {Link} from "react-router";
 
 const NavBar = () => {
     return (
         <AppBar position="fixed">
             <Toolbar>
+                <Box display="flex" alignItems="center">
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                    <Link to="/" style={{ textDecoration: "none", color: "inherit", alignSelf: "flex-end" }}>
-                        QuickRide
-                    </Link>
+                    QuickRide
                 </Typography>
-                <Box sx={{ display: "flex", gap: 2 }}>
-                    <Button color="inherit" component={Link} to="/cars">
+                </Box>
+                <Box width="100%" />
+                <Box display="flex" alignItems="center" sx={{ display: "flex", gap: 1 }}>
+                    <Button color="inherit" component={Link} to="/cars" sx={{ mx: 1, "&:hover": { bgcolor: "rgba(255, 255, 255, 0.5)" } }}>
                         Samochody
                     </Button>
-                    <Button color="inherit" component={Link} to="/about">
+                    <Divider orientation="vertical" flexItem sx={{ bgcolor: "white", mx: 1 }} />
+                    <Button color="inherit" component={Link} to="/about" sx={{ mx: 1, "&:hover": { bgcolor: "rgba(255, 255, 255, 0.5)" } }}>
                         O nas
                     </Button>
-                    <Button color="inherit" component={Link} to="/contact">
+                    <Divider orientation="vertical" flexItem sx={{ bgcolor: "white", mx: 1 }} />
+                    <Button color="inherit" component={Link} to="/contact" sx={{ mx: 1, "&:hover": { bgcolor: "rgba(255, 255, 255, 0.5)" } }}>
                         Kontakt
                     </Button>
                 </Box>
