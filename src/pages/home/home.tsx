@@ -37,7 +37,7 @@ const HomePage = () => {
     return (
         <>
             <NavBar />
-            <Container maxWidth="lg" sx={{ marginTop: "20px" }}>
+            <Container maxWidth={false} sx={{ marginTop: "100px", padding: "16px" }}>
                 <Grid container spacing={4}>
                     {cars && cars.map((car) => (
                         <Grid item xs={12} sm={6} md={4} key={car.id}>
