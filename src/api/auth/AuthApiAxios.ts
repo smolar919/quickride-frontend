@@ -3,18 +3,18 @@ import {axiosInstance} from "../../../AxiosClient.ts";
 import {LoginForm} from "./LoginForm.ts";
 
 export class AuthApiAxios {
-    async register(form: RegisterForm): Promise<String> {
-        const response = await axiosInstance.put<String>("/auth/register", form);
+    async register(form: RegisterForm): Promise<string> {
+        const response = await axiosInstance.post<string>("/auth/register", form);
         return response.data;
     }
 
-    async login(form: LoginForm): Promise<String> {
-        const response = await axiosInstance.post<String>("/auth/login", form);
+    async login(form: LoginForm): Promise<string> {
+        const response = await axiosInstance.post<string>("/auth/login", form);
         return response.data;
     }
 
-    async logout(): Promise<String> {
-        const response = await axiosInstance.post<String>("/auth/logout");
+    async logout(): Promise<string> {
+        const response = await axiosInstance.post<string>("/auth/logout");
         return response.data;
     }
 }

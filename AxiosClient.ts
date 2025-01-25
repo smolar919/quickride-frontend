@@ -1,13 +1,12 @@
 import axios from "axios";
-import {getToken} from "./src/config/AuthStorage.ts";
-
+import {AuthStorage} from "./src/config/AuthStorage.ts";
 export const axiosInstance = axios.create({
     baseURL: "http://localhost:8080",
 });
 
 axiosInstance.interceptors.request.use(
     (config) => {
-        const token = getToken();
+        const token = AuthStorage.getToken();
         if (token) {
             config.headers["Authorization"] = `Bearer ${token}`;
         }
