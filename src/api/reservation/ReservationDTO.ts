@@ -8,4 +8,5 @@ export interface ReservationDTO {
     user: AppUserDTO;
     car: CarDTO;
     confirmed: boolean;
+    fullPrice: number;
 }

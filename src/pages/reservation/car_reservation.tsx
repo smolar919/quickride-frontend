@@ -55,6 +55,7 @@ const CarReservation = () => {
                 endDate: endDate.toDate(),
                 appUserId: currentUserId!,
                 carId: carId!,
+                fullPrice: totalPrice,
             };
 
             try {

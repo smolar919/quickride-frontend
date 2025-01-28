@@ -2,6 +2,7 @@ import {createBrowserRouter} from "react-router";
 import Error from "../pages/error/error.tsx";
 import HomePage from "../pages/home/home.tsx";
 import CarReservation from "../pages/reservation/car_reservation.tsx";
+import UserReservationsPage from "../pages/reservation/user_reservations.tsx";
 import {LoginFormComponent} from "../components/auth/login.tsx";
 import {RegisterFormComponent} from "../components/auth/register.tsx";
 
@@ -28,7 +29,7 @@ export const router = createBrowserRouter([
     },
     {
         path: "/reservations/user/:userId",
-        element: <HomePage />, // TODO
+        element: <UserReservationsPage />,
         errorElement: <Error />
     }
 ]);

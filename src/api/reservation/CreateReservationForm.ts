@@ -3,4 +3,5 @@ export interface CreateReservationForm {
     endDate: Date;
     appUserId: string;
     carId: string;
+    fullPrice: number
 }
