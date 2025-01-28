@@ -1,11 +1,12 @@
 import { AppBar, Box, Button, Divider, Toolbar, Typography } from "@mui/material";
-import {AuthStorage, getUserId} from "../../config/AuthStorage.ts";
+import { AuthStorage, getUserId, isAdmin } from "../../config/AuthStorage.ts";
 import { useNavigate } from "react-router";
 
 const NavBar = () => {
     const navigate = useNavigate();
     const isAuthenticated = AuthStorage.isAuthenticated();
     const userId = getUserId();
+    const isUserAdmin = isAuthenticated && isAdmin();
 
     const handleLogout = () => {
         AuthStorage.clearToken();
@@ -26,7 +27,6 @@ const NavBar = () => {
                         color="inherit"
                         onClick={() => navigate("/")}
                         sx={{
-                            textTransform: "none",
                             whiteSpace: "nowrap",
                             px: 2,
                             "&:hover": { bgcolor: "rgba(255, 255, 255, 0.5)" },
@@ -41,7 +41,6 @@ const NavBar = () => {
                                 color="inherit"
                                 onClick={() => navigate(`/reservations/user/${userId}`)}
                                 sx={{
-                                    textTransform: "none",
                                     whiteSpace: "nowrap",
                                     px: 2,
                                     "&:hover": { bgcolor: "rgba(255, 255, 255, 0.5)" },
@@ -50,11 +49,26 @@ const NavBar = () => {
                                 Rezerwacje
                             </Button>
                             <Divider orientation="vertical" variant="middle" flexItem sx={{ bgcolor: "white" }} />
+                            {isUserAdmin && (
+                                <>
+                                    <Button
+                                        color="inherit"
+                                        onClick={() => navigate("/admin/home")}
+                                        sx={{
+                                            whiteSpace: "nowrap",
+                                            px: 2,
+                                            "&:hover": { bgcolor: "rgba(255, 255, 255, 0.5)" },
+                                        }}
+                                    >
+                                        Panel Admina
+                                    </Button>
+                                    <Divider orientation="vertical" variant="middle" flexItem sx={{ bgcolor: "white" }} />
+                                </>
+                            )}
                             <Button
                                 color="inherit"
                                 onClick={handleLogout}
                                 sx={{
-                                    textTransform: "none",
                                     whiteSpace: "nowrap",
                                     px: 2,
                                     "&:hover": { bgcolor: "rgba(255, 255, 255, 0.5)" },
@@ -69,7 +83,6 @@ const NavBar = () => {
                                 color="inherit"
                                 onClick={() => navigate("/login")}
                                 sx={{
-                                    textTransform: "none",
                                     whiteSpace: "nowrap",
                                     px: 2,
                                     "&:hover": { bgcolor: "rgba(255, 255, 255, 0.5)" },
@@ -82,7 +95,6 @@ const NavBar = () => {
                                 color="inherit"
                                 onClick={() => navigate("/register")}
                                 sx={{
-                                    textTransform: "none",
                                     whiteSpace: "nowrap",
                                     px: 2,
                                     "&:hover": { bgcolor: "rgba(255, 255, 255, 0.5)" },
