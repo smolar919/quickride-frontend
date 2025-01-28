@@ -1,6 +1,6 @@
 export interface CreateReservationForm {
     startDate: Date;
     endDate: Date;
-    userId: string;
+    appUserId: string;
     carId: string;
 }

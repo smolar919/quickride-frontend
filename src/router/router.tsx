@@ -25,5 +25,10 @@ export const router = createBrowserRouter([
         path: "/register",
         element: <RegisterFormComponent/>,
         errorElement: <Error/>
+    },
+    {
+        path: "/reservations/user/:userId",
+        element: <HomePage />, // TODO
+        errorElement: <Error />
     }
 ]);

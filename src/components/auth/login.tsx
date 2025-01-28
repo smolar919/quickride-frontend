@@ -33,7 +33,7 @@ export const LoginFormComponent: React.FC = () => {
 
     return (
         <Paper sx={{ margin: 10, padding: 10 }}>
-            <Typography component="h4" sx={{ fontSize: '2rem' }}>
+            <Typography component="h4" sx={{ fontSize: '2rem', textAlign: 'center'}}>
                 Logowanie
             </Typography>
             <Box component="form" onSubmit={handleSubmit} sx={{ maxWidth: 300, mx: 'auto', mt: 4 }}>
