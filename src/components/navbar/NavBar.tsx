@@ -1,7 +1,12 @@
 import {AppBar, Box, Button, Divider, Toolbar, Typography} from "@mui/material";
-import {Link} from "react-router";
+import {Link, useNavigate} from "react-router";
+import {getUserId} from "../../config/AuthStorage.ts";
 
 const NavBar = () => {
+
+    const navigate = useNavigate();
+    const userId = getUserId();
+
     return (
         <AppBar position="fixed">
             <Toolbar>
@@ -16,7 +21,14 @@ const NavBar = () => {
                         Samochody
                     </Button>
                     <Divider orientation="vertical" flexItem sx={{ bgcolor: "white", mx: 1 }} />
-                    <Button color="inherit" component={Link} to="/about" sx={{ mx: 1, "&:hover": { bgcolor: "rgba(255, 255, 255, 0.5)" } }}>
+                    <Button
+                        color="inherit"
+                        onClick={() => navigate(`/reservations/user/${userId}`)}
+                        sx={{
+                            mx: 1,
+                            "&:hover": { bgcolor: "rgba(255, 255, 255, 0.5)" },
+                        }}
+                    >
                         Rezerwacje
                     </Button>
                     <Divider orientation="vertical" flexItem sx={{ bgcolor: "white", mx: 1 }} />
