@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextField, Button, Box, Paper, Typography, Link } from '@mui/material';
+import {TextField, Button, Box, Paper, Typography, Link, Container} from '@mui/material';
 import { AuthApiAxios } from "../../api/auth/AuthApiAxios.ts";
 import { RegisterForm } from "../../api/auth/RegisterForm.ts";
 import {useNavigate} from "react-router";
@@ -28,8 +28,9 @@ export const RegisterFormComponent: React.FC = () => {
     };
 
     return (
-        <Paper sx={{ margin: 10, padding: 10 }}>
-            <Typography component="h4" sx={{ fontSize: '2rem' }}>
+        <Container maxWidth="sm" sx={{ marginTop: "150px" }}>
+        <Paper sx={{ margin: 10, padding: 10}}>
+            <Typography component="h4" sx={{ fontSize: '2rem', textAlign: 'center' }}>
                 Rejestracja
             </Typography>
             <Box component="form" onSubmit={handleSubmit} sx={{ maxWidth: 300, mx: 'auto', mt: 4 }}>
@@ -90,5 +91,6 @@ export const RegisterFormComponent: React.FC = () => {
                 </Box>
             </Box>
         </Paper>
+        </Container>
     );
 };

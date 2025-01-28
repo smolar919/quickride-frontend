@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextField, Button, Box, Typography, Paper, Link } from '@mui/material';
+import {TextField, Button, Box, Typography, Paper, Link, Container} from '@mui/material';
 import { AuthApiAxios } from "../../api/auth/AuthApiAxios.ts";
 import { LoginForm } from "../../api/auth/LoginForm.ts";
 import { AuthStorage } from "../../config/AuthStorage.ts";
@@ -32,7 +32,8 @@ export const LoginFormComponent: React.FC = () => {
     };
 
     return (
-        <Paper sx={{ margin: 10, padding: 10 }}>
+        <Container maxWidth="sm" sx={{ marginTop: "150px" }}>
+        <Paper sx={{ margin: 10, padding: 10}} >
             <Typography component="h4" sx={{ fontSize: '2rem', textAlign: 'center'}}>
                 Logowanie
             </Typography>
@@ -80,5 +81,6 @@ export const LoginFormComponent: React.FC = () => {
                 </Box>
             </Box>
         </Paper>
+        </Container>
     );
 };
