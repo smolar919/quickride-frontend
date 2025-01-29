@@ -28,4 +28,8 @@ export class CarApiAxios {
         const response = await axiosInstance.put<CarDTO>(`/cars/${id}`, form);
         return response.data;
     }
+
+    async deleteCar(id: string): Promise<void> {
+        await axiosInstance.delete<CarDTO>(`/cars/${id}`);
+    }
 }

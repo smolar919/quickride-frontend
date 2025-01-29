@@ -23,4 +23,9 @@ export class ReservationApiAxios {
         const response = await axiosInstance.put<ReservationDTO>(`/reservations/${id}`, form);
         return response.data;
     }
+
+    async getAllReservations() : Promise<ReservationDTO[]> {
+        const response = await axiosInstance.get<ReservationDTO[]>(`/reservations/all`);
+        return response.data;
+    }
 }
