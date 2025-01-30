@@ -3,15 +3,12 @@ import {useEffect, useState} from "react";
 import {CreateReservationForm} from "../../api/reservation/CreateReservationForm.ts";
 import {ReservationApiAxios} from "../../api/reservation/ReservationApiAxios.ts";
 import {Box, Button, Card, CardContent, CardMedia, Container, Typography} from "@mui/material";
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import {DatePicker} from "@mui/x-date-pickers";
 import {useParams} from "react-router";
 import {CarApiAxios} from "../../api/car/CarApiAxios.ts";
 import {Dayjs} from "dayjs";
 import NavBar from "../../components/navbar/NavBar.tsx";
 import { getUserId } from "../../config/AuthStorage.ts"
-import dayjs from 'dayjs'
+import ReservationDatePicker from "../../components/reservation/ReservationDatePicker.tsx";
 
 const CarReservation = () => {
     const { carId } = useParams<{ carId: string}>()
@@ -100,26 +97,13 @@ const CarReservation = () => {
                                 </Typography>
                             </CardContent>
                             <Box sx={{ display: "flex", flexDirection: "column", gap: 2, marginTop: "16px" }}>
-                                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                    <DatePicker
-                                        value={startDate}
-                                        onChange={(newValue) => setStartDate(newValue)}
-                                        label="Wybierz datę początkową"
-                                        minDate={dayjs()}
-                                        slotProps={{
-                                            textField: { fullWidth: true },
-                                        }}
-                                    />
-                                    <DatePicker
-                                        value={endDate}
-                                        onChange={(newValue) => setEndDate(newValue)}
-                                        label="Wybierz datę końcową"
-                                        minDate={startDate || undefined}
-                                        slotProps={{
-                                            textField: { fullWidth: true },
-                                        }}
-                                    />
-                                </LocalizationProvider>
+                                <ReservationDatePicker
+                                    carId={car.id}
+                                    startDate={startDate}
+                                    setStartDate={setStartDate}
+                                    endDate={endDate}
+                                    setEndDate={setEndDate}
+                                />
                                 <Button variant="contained" onClick={calculatePrice}>
                                     Oblicz cenę
                                 </Button>

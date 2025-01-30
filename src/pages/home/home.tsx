@@ -14,8 +14,8 @@ const HomePage = () => {
         const fetchCars = async () => {
             try {
                 const carApi = new CarApiAxios();
-                const availableCars = await carApi.getAvailableCars();
-                setCars(availableCars);
+                const allCars = await carApi.getAllCars();
+                setCars(allCars);
             } catch (error) {
                 console.error("Failed to fetch cars", error);
             } finally {

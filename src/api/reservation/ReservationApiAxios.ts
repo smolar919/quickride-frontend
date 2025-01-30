@@ -2,6 +2,7 @@ import {CreateReservationForm} from "./CreateReservationForm.ts";
 import {ReservationDTO} from "./ReservationDTO.ts";
 import {axiosInstance} from "../../../AxiosClient.ts";
 import {EditReservationForm} from "./EditReservationForm.ts";
+import {ReservationPeriodDTO} from "./ReservationPeriosDTO.ts";
 
 export class ReservationApiAxios {
     async createReservation(form: CreateReservationForm): Promise<ReservationDTO> {
@@ -26,6 +27,11 @@ export class ReservationApiAxios {
 
     async getAllReservations() : Promise<ReservationDTO[]> {
         const response = await axiosInstance.get<ReservationDTO[]>(`/reservations/all`);
+        return response.data;
+    }
+
+    async getReservedDatesForCar(carId: string): Promise<ReservationPeriodDTO[]> {
+        const response = await axiosInstance.get<ReservationPeriodDTO[]>(`/reservations/car/${carId}`);
         return response.data;
     }
 }
